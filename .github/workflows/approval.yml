@@ -729,7 +729,7 @@ jobs:
                     title: allTeamsApproved ? 'All teams approved ✅' : 
                            failureReason?.startsWith('❌') ? 'Approval order violation ❌' :
                            `Waiting for ${nextTeam?.name || 'approval'}`,
-                    summary: `### Approval Status\n\n${approvalStatus}`
+                    summary: `### Approval Status\n\n${comment}`
                   }
                 });
               } catch (error) {
