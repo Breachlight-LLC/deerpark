@@ -124,7 +124,7 @@ jobs:
       checks: write
     strategy:
       matrix:
-        pr_number: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.check_all_prs == 'true') ? fromJSON(needs.identify-prs.outputs.pr_numbers || '[]') : fromJSON(format('[{0}]', github.event.pull_request.number || github.event.inputs.pr_number || '0')) }}
+        pr_number: ${{ fromJSON(needs.identify-prs.outputs.pr_numbers || format('[{0}]', github.event.pull_request.number || github.event.inputs.pr_number || '0')) }}
       max-parallel: 5
       fail-fast: false
     steps:
