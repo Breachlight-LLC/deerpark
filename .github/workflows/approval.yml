@@ -723,8 +723,7 @@ jobs:
                   name: 'Sequential Approval Status',
                   head_sha: pr.data.head.sha,
                   status: 'completed',
-                  conclusion: failureReason?.startsWith('❌') ? 'failure' : 
-                             allTeamsApproved ? 'success' : 'neutral',
+                  conclusion: failureReason?.startsWith('❌') ? 'failure' : currentTeamIndex > teamCount ? 'success' : 'neutral',
                   output: {
                     title: allTeamsApproved ? 'All teams approved ✅' : 
                            failureReason?.startsWith('❌') ? 'Approval order violation ❌' :
